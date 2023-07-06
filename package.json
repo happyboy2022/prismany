@@ -1,6 +1,6 @@
 {
-  "name": "prismany",
-  "version": "1.0.0",
+  "name": "prismany-esm",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -15,9 +15,9 @@
     "prismany": "./dist/cli.js"
   },
   "keywords": [],
-  "author": "https://github.com/JoeRoddy",
+  "author": "https://github.com/happyboy2022",
   "repository": {
-    "url": "https://github.com/JoeRoddy/prismany"
+    "url": "https://github.com/happyboy2022/prismany"
   },
   "license": "ISC",
   "devDependencies": {

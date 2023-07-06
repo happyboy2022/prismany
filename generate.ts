@@ -51,7 +51,7 @@ const generate = () => {
         ).toString();
         // console.log(prismaGenerateOutput);
 
-        const clientPath = prismaGenerateOutput.match(/(?<=to\s)(.+?)(?=\sin (.*)ms)/)?.[0];
+        const clientPath = prismaGenerateOutput.match(/(?<=to\s)(.+?)(?=\sin (.*) (ms|s))/)?.[0];
         if (!clientPath) return console.error(`Error parsing client path from prisma generate output`);
 
         if (!sharedEngineCreated) {
@@ -110,7 +110,7 @@ const generate = () => {
 
         let dbIndexContentsTs = readFileSync(clientIndexPathTs).toString();
         dbIndexContentsTs =
-          `import {${customClientName}} from './${schemaName}/index.js';\n${dbIndexContentsTs}`.replace(
+          `import {${customClientName}} from './${schemaName}/index.mjs';\n${dbIndexContentsTs}`.replace(
             /export {/g,
             `export {\n  ${customClientName},`,
           );
@@ -118,7 +118,7 @@ const generate = () => {
 
         let dbIndexContentsJs = readFileSync(clientIndexPathJs).toString();
         dbIndexContentsJs =
-          `const {${customClientName}} = require('./${schemaName}/index.js');\n${dbIndexContentsJs}`.replace(
+          `const {${customClientName}} = require('./${schemaName}/index.mjs');\n${dbIndexContentsJs}`.replace(
             /module.exports\s?=\s?{/g,
             `module.exports = {\n  ${customClientName},`,
           );
